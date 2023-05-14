@@ -18,9 +18,6 @@ export default function Home() {
   },[])
 
   function startBody(){
-    const body = document.querySelector("#bodyMain") as HTMLBodyElement 
-
-    console.log(`s`)
     
     document.addEventListener('visibilitychange', ()=>{
       console.log(`added`)

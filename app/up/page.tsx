@@ -29,7 +29,6 @@ export default function Home() {
   },[])
 
   function startBody(){
-    const body = document.querySelector("#bodyMain") as HTMLBodyElement 
   
     document.addEventListener('visibilitychange', ()=>{
 
@@ -40,7 +39,7 @@ export default function Home() {
         openAnotherPage()
     });
     
-    body.addEventListener('keydown', (event)=>{
+    document.addEventListener('keydown', (event)=>{
       if (event.ctrlKey) {
         openAnotherPage()
       }
