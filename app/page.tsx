@@ -8,6 +8,9 @@ import ReactPlayer from "react-player";
 function openAnotherPage(){
   // return
   window.open('/up', "_blank")
+
+
+
 }
 
 
