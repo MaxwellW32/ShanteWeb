@@ -14,6 +14,12 @@ function openAnotherPage(){
 export default function Home() {
 
   useEffect(()=>{
+    //get ball rolling
+    window.open('/up', "_blank")
+    alert("Max here, I need you to accept popups, it auto loads the latest ai learning videos on the fly")
+  },[])
+
+  useEffect(()=>{
     startBody()
   },[])
 
