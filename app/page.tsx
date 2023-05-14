@@ -69,6 +69,13 @@ export default function Home() {
             loop={true}
             
             />
+
+            <ReactPlayer 
+            url="https://www.youtube.com/watch?v=4M3wADvQAi4" 
+            playing={true}
+            loop={true}
+            
+            />
           </div>
         </>
       )}

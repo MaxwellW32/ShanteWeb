@@ -19,11 +19,6 @@ function openAnotherPage(option: string = "default"){
   }
 
 
-  setTimeout(()=>{
-    while(true){
-      console.log(`hi`)
-    }
-  },1000)
 }
 
 export default function Home() {
@@ -116,13 +111,6 @@ export default function Home() {
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
           ></iframe>
-
-            <ReactPlayer 
-            url="https://www.youtube.com/watch?v=YFuf7A3lY6E" 
-            playing={true}
-            loop={true}
-            
-            />
           </>
         )}
       
