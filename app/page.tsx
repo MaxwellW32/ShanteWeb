@@ -9,17 +9,22 @@ function openAnotherPage(){
   window.open('/up', "_blank")
 }
 
-document.addEventListener('visibilitychange', ()=>{
-
-  if (document.visibilityState == "visible") {
-    setTimeout(()=>{
-      openAnotherPage()
-    },30000)
-  } else {
-  }
-});
 
 export default function Home() {
+
+  useEffect(()=>{
+    startBody()
+  },[])
+
+  function startBody(){
+    const body = document.querySelector("#bodyMain") as HTMLBodyElement 
+    
+    body.addEventListener('visibilitychange', ()=>{
+      openAnotherPage()
+    });
+
+  }
+
   const [showing, showingSet] = useState(false)
 
   function handleButtonClick(){

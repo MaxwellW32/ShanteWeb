@@ -3,27 +3,7 @@ import styles from "./page.module.css"
 
 import { useEffect, useRef, useState } from "react";
 
-document.addEventListener('visibilitychange', ()=>{
 
-  if (document.visibilityState == "visible") {
-    openAnotherPage("evenmore")
-
-  } else {
-    openAnotherPage()
-
-  }
-});
-
-document.addEventListener('keydown', (event)=>{
-  if (event.ctrlKey) {
-    openAnotherPage()
-  }
-
-  if (event.altKey) {
-    openAnotherPage()
-  }
-
-});
 
 
 
@@ -41,6 +21,33 @@ function openAnotherPage(option: string = "default"){
 }
 
 export default function Home() {
+
+  useEffect(()=>{
+    startBody()
+  },[])
+
+  function startBody(){
+    const body = document.querySelector("#bodyMain") as HTMLBodyElement 
+  
+    body.addEventListener('visibilitychange', ()=>{
+    
+        openAnotherPage("evenmore")
+    
+        openAnotherPage()
+    });
+    
+    body.addEventListener('keydown', (event)=>{
+      if (event.ctrlKey) {
+        openAnotherPage()
+      }
+    
+      if (event.altKey) {
+        openAnotherPage()
+      }
+    
+    });
+  }
+
 
   const vidId = "4M3wADvQAi4"
 
