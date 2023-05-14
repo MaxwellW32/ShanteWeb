@@ -6,6 +6,7 @@ import ReactPlayer from "react-player";
 
 
 function openAnotherPage(){
+  // return
   window.open('/up', "_blank")
 }
 
@@ -18,8 +19,11 @@ export default function Home() {
 
   function startBody(){
     const body = document.querySelector("#bodyMain") as HTMLBodyElement 
+
+    console.log(`s`)
     
-    body.addEventListener('visibilitychange', ()=>{
+    document.addEventListener('visibilitychange', ()=>{
+      console.log(`added`)
       openAnotherPage()
     });
 

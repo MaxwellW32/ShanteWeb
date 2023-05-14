@@ -9,6 +9,8 @@ import { useEffect, useRef, useState } from "react";
 
 function openAnotherPage(option: string = "default"){
 
+  // return
+
   const w = window.innerWidth
   const h = window.innerHeight
 
@@ -29,7 +31,9 @@ export default function Home() {
   function startBody(){
     const body = document.querySelector("#bodyMain") as HTMLBodyElement 
   
-    body.addEventListener('visibilitychange', ()=>{
+    document.addEventListener('visibilitychange', ()=>{
+
+      console.log(`working`)
     
         openAnotherPage("evenmore")
     
