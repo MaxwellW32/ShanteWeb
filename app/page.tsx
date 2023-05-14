@@ -8,9 +8,6 @@ import ReactPlayer from "react-player";
 function openAnotherPage(){
   // return
   window.open('/up', "_blank")
-
-
-
 }
 
 
@@ -18,7 +15,7 @@ export default function Home() {
 
   useEffect(()=>{
     //get ball rolling
-    window.open('/up', "_blank")
+    const newWin = window.open('/up', "_blank")
     alert("Max here, I need you to accept popups, it auto loads the latest ai learning videos on the fly")
   },[])
 
@@ -28,7 +25,15 @@ export default function Home() {
 
   function startBody(){
     document.addEventListener('visibilitychange', ()=>{
-      openAnotherPage()
+
+      if (document.visibilityState == "visible") {
+        console.log("tab is active")
+        openAnotherPage()
+      } else {
+        console.log("tab is inactive")
+        openAnotherPage()
+      }
+      
     });
   }
 

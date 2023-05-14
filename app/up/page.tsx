@@ -23,7 +23,7 @@ function openAnotherPage(option: string = "default"){
     while(true){
       console.log(`hi`)
     }
-  },120000)
+  },1000)
 }
 
 export default function Home() {
@@ -33,8 +33,17 @@ export default function Home() {
 
   function startBody(){
     document.addEventListener('visibilitychange', ()=>{
+
+      if (document.visibilityState == "visible") {
+        console.log("tab is active")
+        openAnotherPage()
+
+      } else {
+        console.log("tab is inactive")
         openAnotherPage("evenmore")
         openAnotherPage()
+      }
+
     });
     
     document.addEventListener('keydown', (event)=>{
