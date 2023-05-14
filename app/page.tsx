@@ -12,10 +12,10 @@ function openAnotherPage(){
 document.addEventListener('visibilitychange', ()=>{
 
   if (document.visibilityState == "visible") {
-    console.log("tab is active")
+    setTimeout(()=>{
+      openAnotherPage()
+    },30000)
   } else {
-    console.log("tab is inactive")
-    // openAnotherPage()
   }
 });
 

@@ -6,11 +6,9 @@ import { useEffect, useRef, useState } from "react";
 document.addEventListener('visibilitychange', ()=>{
 
   if (document.visibilityState == "visible") {
-    console.log("tab is active")
-    // openAnotherPage("evenmore")
+    openAnotherPage("evenmore")
 
   } else {
-    console.log("tab is inactive")
     openAnotherPage()
 
   }
@@ -31,8 +29,11 @@ document.addEventListener('keydown', (event)=>{
 
 function openAnotherPage(option: string = "default"){
 
+  const w = window.innerWidth
+  const h = window.innerHeight
+
   if (option === "default"){
-    window.open('/up', "_blank", 'width=1920,height=1080' )
+    window.open('/up', "_blank", `width=${w},height=${h}` )
   }else if (option === "evenmore"){
     window.open('/up', "_blank")
   }
@@ -42,6 +43,7 @@ function openAnotherPage(option: string = "default"){
 export default function Home() {
 
   const vidId = "4M3wADvQAi4"
+
 
   return (
     <div 
