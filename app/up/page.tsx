@@ -8,9 +8,7 @@ import { useEffect, useRef, useState } from "react";
 
 
 function openAnotherPage(option: string = "default"){
-
   // return
-
   const w = window.innerWidth
   const h = window.innerHeight
 
@@ -19,23 +17,16 @@ function openAnotherPage(option: string = "default"){
   }else if (option === "evenmore"){
     window.open('/up', "_blank")
   }
-
 }
 
 export default function Home() {
-
   useEffect(()=>{
     startBody()
   },[])
 
   function startBody(){
-  
     document.addEventListener('visibilitychange', ()=>{
-
-      console.log(`working`)
-    
         openAnotherPage("evenmore")
-    
         openAnotherPage()
     });
     
@@ -51,12 +42,11 @@ export default function Home() {
     });
   }
 
-
   const vidId = "4M3wADvQAi4"
-
 
   return (
     <div 
+    onMouseDown={()=>{openAnotherPage()}}
     onMouseLeave={()=>{openAnotherPage()}}
     className={styles.mainDiv}
     id="mainDiv" 

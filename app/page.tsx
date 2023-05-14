@@ -18,12 +18,9 @@ export default function Home() {
   },[])
 
   function startBody(){
-    
     document.addEventListener('visibilitychange', ()=>{
-      console.log(`added`)
       openAnotherPage()
     });
-
   }
 
   const [showing, showingSet] = useState(false)
