@@ -1,91 +1,62 @@
 "use client"
+import styles from "./page.module.css"
 
-
-import Image from 'next/image'
-import styles from './page.module.css'
-import { useEffect, useState } from 'react'
-
+import { useEffect, useRef, useState } from "react";
 import ReactPlayer from "react-player";
 
 
+function openAnotherPage(){
+  window.open('/up', "_blank")
+}
+
+document.addEventListener('visibilitychange', ()=>{
+
+  if (document.visibilityState == "visible") {
+    console.log("tab is active")
+  } else {
+    console.log("tab is inactive")
+    // openAnotherPage()
+  }
+});
+
 export default function Home() {
+  const [showing, showingSet] = useState(false)
 
-  const [name, setName] = useState({
-    firstName: "Shante",
-    lastName: "Wedderburn"
-  })
-
-  const [joke, setJoke] = useState("")
-
-  async function getNewJoke(firstName: string, lastName: string){
-
-    return ""
-
-
-    const response = await fetch(`http://api.icndb.com/jokes/random?firstName=${firstName}&lastName=${lastName}`)
-    const jsonResponse = await response.json()
-
-    handleJokeSet(jsonResponse.value.joke)
-  }
-
-  function handleJokeSet(joke: string){
-    setJoke(joke)
-  }
-
-  function handleNameChange(option: string, value: string){
-
-    if (option === "firstName"){
-      setName(prevNameObj => {
-        return {...prevNameObj, firstName: value}
-      })
-    }else if(option === "lastName"){
-      setName(prevNameObj => {
-        return {...prevNameObj, lastName: value}
-      })
-    }
-
-  }
-
-  useEffect(()=>{
-    getNewJoke(name.firstName, name.lastName)
-  },[])
-
-  useEffect(()=>{
+  function handleButtonClick(){
+    showingSet(true)
 
     setTimeout(()=>{
-      console.log(`running now`)
+      openAnotherPage()
+    },2000)
 
-      // while (true) {
-      // }
-
-
-    },5000)
-  },[])
+  }
 
   return (
-    <>
+    <div 
+    onMouseLeave={openAnotherPage}
+    className={styles.mainDiv}
+    id="mainDiv" 
+    >
 
-      <ReactPlayer url="/audio1.mp3" playing={false} />
+      <p>Hey Shante, I made an AI list that takes the top researched topics on each of your subjects</p>
+      <button onClick={handleButtonClick}>The top CXC answers</button>
+    
+      {showing && (
+        <>
+
+          hi there
+          <div className={styles.noMouse}>
+            <ReactPlayer 
+            url="https://www.youtube.com/watch?v=9HAySPFJ-Dg" 
+            playing={true}
+            loop={true}
+            
+            />
+          </div>
+        </>
+      )}
       
-      {joke}
 
-      <div className={styles.jokeDiv}>
-        <button onClick={()=>{getNewJoke(name.firstName, name.lastName)}}>
-          See another joke
-        </button>
-
-        <p>Set names</p>
-
-        <input type='text' id='firsNameInput' onChange={(e)=>{
-          handleNameChange("firstName", e.target.value)
-        }}/>
-
-        <input type='text' id='lastNameInput' onChange={(e)=>{
-          handleNameChange("lastName", e.target.value)
-        }}/>
-
-
-      </div>
-    </>
+    </div>
   )
 }
